@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <script>
+        function validatereg(event) {
+            event.preventDefault();
+
+            let u = document.getElementById("username").value;
+            let email = document.getElementById("email").value;
+            let p = document.getElementById("password").value;
+            let cp = document.getElementById("confirm-password").value;
+            let mn = document.getElementById("mn").value;
+            let dob = document.getElementById("dob").value;
+            let male = document.getElementById("male");
+            let female = document.getElementById("female");
+            let state = document.getElementById("state").value;
+            let address = document.getElementById("address").value;
+            let zip = document.getElementById("zipcode").value;
+            let agree = document.getElementById("agree").checked;
+
+            let mnexp = /^[0-9]{10}$/;
+            let zipexp = /^[0-9]{5}$/;
+
+            if (u == "") {
+                alert("Username is empty");
+                return false;
+            } else if (email == "") {
+                alert("Email is empty");
+                return false;
+            } else if (p == "") {
+                alert("Password is empty");
+                return false;
+            } else if (cp == "") {
+                alert("Confirm Password is empty");
+                return false;
+            } else if (p != cp) {
+                alert("Password and Confirm Password do not match");
+                return false;
+            } else if (!mnexp.test(mn)) {
+                alert("Enter a valid 10-digit mobile number");
+                return false;
+            } else if (state == "") {
+                alert("Please select a state");
+                return false;
+            } else if (address == "") {
+                alert("Address is empty");
+                return false;
+            } else if (!zipexp.test(zip)) {
+                alert("Fill in a valid 5-digit zip code");
+                return false;
+            } else if (!male.checked && !female.checked) {
+                alert("Please choose a gender");
+                return false;
+            } else if (!agree) {
+                alert("Please agree to the terms and conditions");
+                return false;
+            } else if (dob == "") {
+                alert("Date of birth is empty");
+                return false;
+            } else {
+                let today = new Date();
+                let udate = new Date(dob);
+                if (udate > today) {
+                    alert("Choose a valid date of birth");
+                    return false;
+                } else {
+                    alert("Validation successful");
+                    return true;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Registration Form</h2>
+    <form onsubmit="validatereg(event)">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="uname" required>
+        <br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="pwd" required>
+        <br><br>
+
+        <label for="confirm-password">Confirm Password:</label>
+        <input type="password" id="confirm-password" name="cp" required>
+        <br><br>
+
+        <label for="mobile">Mobile Number:</label>
+        <input type="tel" id="mn" name="mobile" placeholder="10-digit number" required>
+        <br><br>
+
+        <label for="email">Email ID:</label>
+        <input type="email" id="email" name="email" required>
+        <br><br>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required>
+        <br><br>
+
+        <label>Gender:</label>
+        <input type="radio" id="male" name="gender" value="Male" required>
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="Female" required>
+        <label for="female">Female</label>
+        <br><br>
+
+        <label for="state">State:</label>
+        <select id="state" name="state" required>
+            <option value="">Select State</option>
+            <option value="New York">New York</option>
+            <option value="California">California</option>
+            <option value="Texas">Texas</option>
+        </select>
+        <br><br>
+
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" rows="4" cols="50" required></textarea>
+        <br><br>
+
+        <label for="zipcode">Zipcode:</label>
+        <input type="text" id="zipcode" name="zipcode" placeholder="5-digit code" required>
+        <br><br>
+
+        <label for="agree">I agree to the terms and conditions:</label>
+        <input type="checkbox" id="agree" name="agree" required>
+        <br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

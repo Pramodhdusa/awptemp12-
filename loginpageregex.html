@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login page</title>
+    <script>
+        function validatelogin(event)
+        {
+            event.preventDefault();
+            var u=document.getElementById("uname").value;
+            var p=document.getElementById("pwd").value;
+            var exp=/^[a-zA-z_.]+$/;
+            if(u=="")
+            {
+                alert("enter uername");
+                return false;
+            }
+            else if(p=="")
+            {
+                alert("enter password");
+                return false;
+            }
+            else if(p.length<6)
+            {
+                alert("password must contains 6 character");
+                return false;
+            }
+            else if(exp.test(u)==false)
+            {
+                alert("enter valid username");
+                return false;
+            }
+            else{
+                alert("validation succesfull;");
+                return false;
+            }
+    
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <form onsubmit="validatelogin(event)">
+            Username: <input type="text" id="uname" name="username"><br><br>
+            Password: <input type="password" id="pwd" name="password"><br><br>
+            <input type="submit" value="SUBMIT">
+        </form>
+    </div>
+   
+</body>
+</html>

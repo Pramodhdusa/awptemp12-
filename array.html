@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //arrays
+        const arr = [1, 2, 3, 4, 5];
+        let [x,y]=arr;
+        document.write(x,y);
+        let [a,,,b]=arr;
+        document.write(a,b);
+        let [c,d,...e]=arr;
+        document.write(c,d,e);
+        document.write("<br>");
+        var arr1=[1,2];
+        let [p,q,z=6]=arr1;
+        document.write(p,q,z);
+
+        document.write("object destructuring");
+        const object={
+            name:"john",
+            age:30,
+            location:"sircilla"
+        }
+        var {name,age}=object;
+        document.write(name+" "+age);
+        var {location:l}=object;
+        document.write(l);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
